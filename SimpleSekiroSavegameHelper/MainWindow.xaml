@@ -1,0 +1,53 @@
+﻿<Window x:Class="SimpleSekiroSavegameHelper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimpleSekiroSavegameHelper"
+        mc:Ignorable="d"
+        Title="Simple Sekiro Savegame Helper v2.0.0" Height="Auto" Width="Auto" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" Loaded="Window_Loaded" Closing="Window_Closing">
+
+    <Grid Background="#FFF9F9F9">
+        <StackPanel Margin="10,10,10,5" Width="400" Height="Auto">
+            <TextBox x:Name="tbFile" Margin="0,0,0,0" Width="400" Height="25" FontSize="14 px" VerticalContentAlignment="Center" TextWrapping="NoWrap" IsReadOnly="True" PreviewMouseDown="TbFile_PreviewMouseDown" />
+            <CheckBox x:Name="cbPatchGame" Margin="0,3,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="Patch game to load unimported foreign/modified save files" ToolTip="The game will accept any save file, even corrupted ones. WARNING: all settings except graphical ones are stored in save file." IsChecked="False" Checked="CbPatchGame_Changed" Unchecked="CbPatchGame_Changed" />
+            <CheckBox x:Name="cbHotkeys" Margin="0,3,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="Enable hotkey shortcuts" ToolTip="Will enable all hotkeys if ticked." IsChecked="False" Checked="CbHotkeysChanged" Unchecked="CbHotkeysChanged" />
+            <Button x:Name="bImport" Margin="0,3,0,0" Width="400" Height="35" FontSize="14 px" Content="Import foreign savegame" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BImport_Click" />
+            <TextBox x:Name="tbBackupName" Margin="0,5,0,0" Width="400" Height="25" FontSize="14 px" VerticalContentAlignment="Center" TextWrapping="NoWrap" PreviewTextInput="AlphaNumeric_PreviewTextInput" DataObject.Pasting="AlphaNumeric_PastingHandler" TabIndex="2">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Padding="5,0,0,0" FontSize="14 px" Content="Backup name..." Foreground="Gray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <Button x:Name="bBackup" Margin="0,5,0,0" Width="400" Height="35" FontSize="14 px" Content="Backup savegame (CTRL + B)" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BBackup_Click" />
+            <Button x:Name="bName" Margin="0,5,0,0" Width="400" Height="35" FontSize="14 px" Content="Set new name for selected backup (CTRL + N)" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BName_Click" />
+            <Button x:Name="bRevert" Margin="0,5,0,0" Width="400" Height="35" FontSize="14 px" Content="Revert to selected backup (CTRL + R)" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BRevert_Click" />
+            <Button x:Name="bDelete" Margin="0,5,0,0" Width="400" Height="35" FontSize="14 px" Content="Delete selected savegame (CTRL + D)" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BDelete_Click" />
+            <ComboBox x:Name="cbBackups" Margin="0,5,0,0" Width="400" Height="25" FontSize="14 px" SelectedValuePath="Key" DisplayMemberPath="Value" TabIndex="1"/>
+            <TextBox x:Name="tbSaveStatus" Margin="0,5,0,0" Width="400" Height="25" FontSize="14 px" FontWeight="Bold" TextAlignment="Center" TextWrapping="NoWrap" IsEnabled="False" />
+            <Label HorizontalAlignment="Right" FontSize="12 px" TabIndex="22">
+                <Hyperlink NavigateUri="https://github.com/uberhalit/SimpleSekiroSavegameHelper" RequestNavigate="Hyperlink_RequestNavigate">
+                    v2.0.0 - by uberhalit
+                </Hyperlink>
+            </Label>
+        </StackPanel>
+    </Grid>
+</Window>
