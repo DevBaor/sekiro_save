@@ -27,6 +27,7 @@ Công cụ sẽ tự động phát hiện và hiển thị đường dẫn đế
 `[Tên người dùng]\AppData\Roaming\Sekiro\[ID Người dùng]\S0000.sl2`
 
 *(Ví dụ trong hình: `ADMIN\AppData\Roaming\Sekiro\76561197960267366\S0000.sl2`)*
+<img width="524" height="549" alt="image" src="https://github.com/user-attachments/assets/bb800466-aea6-442d-8d32-6a058964bf01" />
 
 ### 2. Hướng dẫn cơ bản
 
