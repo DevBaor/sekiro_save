@@ -1,6 +1,7 @@
 # Sekiro Savegame
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub contributors](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 Một công cụ đơn giản giúp người chơi Sekiro: Shadows Die Twice dễ dàng quản lý, sao lưu và khôi phục (revert) các tệp lưu trữ (savegame) của mình.
 
 ## ✨ Tính năng chính
